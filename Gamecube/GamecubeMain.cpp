@@ -538,9 +538,18 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
+		// OPTIONAL: Enable autoboot with hardcoded values (comment out to disable)
+		// Change these paths to match your setup
+		#define AUTOBOOT_ENABLED 1
+		#ifdef AUTOBOOT_ENABLED
+		Autoboot = true;
+		strncpy(AutobootPath, "sd:/roms/Rayman", sizeof(AutobootPath));
+		strncpy(AutobootROM, "Rayman.cue", sizeof(AutobootROM));
+		#else
 		Autoboot = false;
 		memset(AutobootPath, 0, sizeof(AutobootPath));
 		memset(AutobootROM, 0, sizeof(AutobootROM));
+		#endif
 	}
 
 		L2Enhance();
